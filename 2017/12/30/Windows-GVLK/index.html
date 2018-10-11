@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Windows GVLK"/>
+
+
+
+
+  <meta name="keywords" content="kangkang个人博客,康康个人博客,康康网络日志,康康的网络日志,康康的个人博客,kangkang网络日志,kangkang学习纪录,css,css3,html,html5,ecmascript5,ES6,ES2015,ES2016,ES2017,ES2018,windows,JavaScript,TypeScript,Node.js,Linux,Vuejs,Angular,Angularjs,React,Vuex,树莓派,kangkang,爬虫,Nginx,Apache,ownCloud,Nextcloud" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="KangKang - 个人博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="https://heyikang.me/2017/12/30/Windows-GVLK/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+//(function(){
+//    var bp = document.createElement('script');
+//    var curProtocol = window.location.protocol.split(':')[0];
+//    if (curProtocol === 'https') {
+//        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+//    }
+//    else {
+//        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+//    }
+//    var s = document.getElementsByTagName("script")[0];
+//    s.parentNode.insertBefore(bp, s);
+//})();
+</script>
+
+<!-- <script async src="//push.zhanzhang.baidu.com/push.js"></script> -->
+
+
+
+
+
+
+
+
+
+    <title> Windows GVLK - KangKang - 个人博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">KangKang</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">KangKang</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Windows GVLK
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-12-30
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#KMS-Key-Management-Service"><span class="toc-text">KMS(Key Management Service)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GVLK"><span class="toc-text">GVLK</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>每次装完系统都挺烦的。这次更烦！好多资料都丢了，激活还是个问题。</p>
+<h2 id="KMS-Key-Management-Service"><a href="#KMS-Key-Management-Service" class="headerlink" title="KMS(Key Management Service)"></a>KMS(Key Management Service)</h2><ul>
+<li>Windows</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// INSTALL</span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-<span class="number">4</span>J6C9-T83GX //GVKL</span><br><span class="line">slmgr /skms domain.com //指定你自己的 Management Service ipaddress or domain</span><br><span class="line">slmgr /ato //执行操作</span><br><span class="line">// UNINSTALL</span><br><span class="line">slmgr /upk //卸载KEY</span><br><span class="line">slmgr /ckms //清除IP地址</span><br><span class="line">slmgr /rearm //重置授权状态</span><br><span class="line">shutdown -r -t <span class="number">0</span> //重启</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>Office</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//INSTALL</span><br><span class="line"><span class="built_in">cd</span> "C:\Program Files\Microsoft Office\Office16"</span><br><span class="line">cscript ospp.vbs /sethst:domain.com</span><br><span class="line">cscript ospp.vbs /act</span><br></pre></td></tr></table></figure>
+<h2 id="GVLK"><a href="#GVLK" class="headerlink" title="GVLK"></a>GVLK</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">OS</th>
+<th style="text-align:left">GVLK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows 10 Professional</td>
+<td style="text-align:left">W269N-WFGWX-YVC9B-4J6C9-T83GX</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Professional N</td>
+<td style="text-align:left">MH37W-N47XK-V7XM9-C7227-GCQG9</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Enterprise</td>
+<td style="text-align:left">NPPR9-FWDCX-D2C8J-H872K-2YT43</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Enterprise N</td>
+<td style="text-align:left">DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Education</td>
+<td style="text-align:left">NW6C2-QMPVW-D7KKK-3GKT6-VCFB2</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Education N</td>
+<td style="text-align:left">2WH4N-8QGBV-H22JP-CT43Q-MDWWJ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Enterprise 2015 LTSB</td>
+<td style="text-align:left">WNMTR-4C88C-JK8YV-HQ7T2-76DF9</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Enterprise 2015 LTSB N</td>
+<td style="text-align:left">2F77B-TNFGY-69QQF-B8YKP-D69TJ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Enterprise 2016 LTSB</td>
+<td style="text-align:left">DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 10 Enterprise 2016 LTSB N</td>
+<td style="text-align:left">QFFDN-GRT3P-VKWWX-X7T3R-8B639</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2016 Datacenter</td>
+<td style="text-align:left">CB7KF-BWN84-R7R2Y-793K2-8XDDG</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2016 Standard</td>
+<td style="text-align:left">WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2016 Essentials</td>
+<td style="text-align:left">JCKRF-N37P4-C2D82-9YXRT-4M63B</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8.1 Professional</td>
+<td style="text-align:left">GCRJD-8NW9H-F2CDX-CCM8D-9D6T9</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8.1 Professional N</td>
+<td style="text-align:left">HMCNV-VVBFX-7HMBH-CTY9B-B4FXY</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8.1 Enterprise</td>
+<td style="text-align:left">MHF9N-XY6XB-WVXMC-BTDCT-MKKG7</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8.1 Enterprise N</td>
+<td style="text-align:left">TT4HM-HN7YT-62K67-RGRQJ-JFFXW</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 R2 Server Standard</td>
+<td style="text-align:left">D2N9P-3P6X9-2R39C-7RTCD-MDVJX</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 R2 Datacenter</td>
+<td style="text-align:left">W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 R2 Essentials</td>
+<td style="text-align:left">KNC87-3J2TX-XB4WP-VCPJV-M4FWM</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8 Professional</td>
+<td style="text-align:left">NG4HW-VH26C-733KW-K6F98-J8CK4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8 Professional N</td>
+<td style="text-align:left">XCVCF-2NXM9-723PB-MHCB7-2RYQQ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8 Enterprise</td>
+<td style="text-align:left">32JNW-9KQ84-P47T8-D8GGY-CWCK7</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 8 Enterprise N</td>
+<td style="text-align:left">JMNMF-RHW7P-DMY6X-RF3DR-X2BQT</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012</td>
+<td style="text-align:left">BN3D2-R7TKB-3YPBD-8DRP2-27GG4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 N</td>
+<td style="text-align:left">8N2M2-HWPGY-7PGT9-HGDD8-GVGGY</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 Single Language</td>
+<td style="text-align:left">2WN2H-YGCQR-KFX6K-CD6TF-84YXQ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 Country Specific</td>
+<td style="text-align:left">4K36P-JN4VD-GDC6V-KDT89-DYFKP</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 Server Standard</td>
+<td style="text-align:left">XC9B7-NBPP2-83J2H-RHMBY-92BT4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 MultiPoint Standard</td>
+<td style="text-align:left">HM7DN-YVMH3-46JC3-XYTG7-CYQJJ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 MultiPoint Premium</td>
+<td style="text-align:left">XNH6W-2V9GX-RGJ4K-Y8X6F-QGJ2G</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2012 Datacenter</td>
+<td style="text-align:left">48HP8-DN98B-MYWDG-T2DCC-8W83P</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 7 Professional</td>
+<td style="text-align:left">FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 7 Professional N</td>
+<td style="text-align:left">MRPKT-YTG23-K7D7T-X2JMM-QY7MG</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 7 Professional E</td>
+<td style="text-align:left">W82YF-2Q76Y-63HXB-FGJG9-GF7QX</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 7 Enterprise</td>
+<td style="text-align:left">33PXH-7Y6KF-2VJC9-XBBR8-HVTHH</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 7 Enterprise N</td>
+<td style="text-align:left">YDRBP-3D83W-TY26F-D46B2-XCKRJ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows 7 Enterprise E</td>
+<td style="text-align:left">C29WB-22CC8-VJ326-GHFJW-H9DH4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 R2 Web</td>
+<td style="text-align:left">6TPJF-RBVHG-WBW2R-86QPH-6RTM4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 R2 HPC edition</td>
+<td style="text-align:left">TT8MH-CG224-D3D7Q-498W2-9QCTX</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 R2 Standard</td>
+<td style="text-align:left">YC6KT-GKW9T-YTKYR-T4X34-R7VHC</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 R2 Enterprise</td>
+<td style="text-align:left">489J6-VHDMP-X63PK-3K798-CPX3Y</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 R2 Datacenter</td>
+<td style="text-align:left">74YFP-3QFB3-KQT8W-PMXWJ-7M648</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 R2 for Itanium-based Systems</td>
+<td style="text-align:left">GT63C-RJFQ3-4GMB6-BRFB9-CB83V</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Vista Business</td>
+<td style="text-align:left">6TPJF-RBVHG-WBW2R-86QPH-6RTM4</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Vista Business N</td>
+<td style="text-align:left">HMBQG-8H2RH-C77VX-27R82-VMQBT</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Vista Enterprise</td>
+<td style="text-align:left">VKK3X-68KWM-X2YGT-QR4M6-4BWMV</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Vista Enterprise N</td>
+<td style="text-align:left">VTC42-BM838-43QHV-84HX6-XJXKV</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Web Server 2008</td>
+<td style="text-align:left">WYR28-R7TFJ-3X2YQ-YCY4H-M249D</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 Standard</td>
+<td style="text-align:left">TM24T-X9RMF-VWXK6-X8JC9-BFGM2</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 Standard without Hyper-V</td>
+<td style="text-align:left">W7VD6-7JFBR-RX26B-YKQ3Y-6FFFJ</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 Enterprise</td>
+<td style="text-align:left">YQGMW-MPWTJ-34KDK-48M3W-X4Q6V</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 Enterprise without Hyper-V</td>
+<td style="text-align:left">39BXF-X8Q23-P2WWT-38T2F-G3FPG</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 HPC</td>
+<td style="text-align:left">RCTX3-KWVHP-BR6TB-RB6DM-6X7HP</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 Datacenter</td>
+<td style="text-align:left">7M67G-PC374-GR742-YH8V4-TCBY3</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 Datacenter without Hyper-V</td>
+<td style="text-align:left">22XQ2-VRXRG-P8D42-K34TD-G3QQC</td>
+</tr>
+<tr>
+<td style="text-align:left">Windows Server 2008 for Itanium-Based Systems</td>
+<td style="text-align:left">4DWFP-JF3DJ-B7DTH-78FJB-PDRHK</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://heyikang.me">KangKang</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://heyikang.me/2017/12/30/Windows-GVLK/">https://heyikang.me/2017/12/30/Windows-GVLK/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Windows/">Windows</a>
+            
+              <a href="/tags/GVLK/">GVLK</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/01/06/MyFirstWebCrawler/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">我的第一个爬虫</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/12/16/ownCloud-Optimization/">
+        <span class="next-text nav-default">ownCloud 基础优化</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:203077885@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/heyikang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://zhihu.com/people/heyikang" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2017 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">KangKang</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>

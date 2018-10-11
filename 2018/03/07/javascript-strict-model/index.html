@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="JavaScript Strict Model"/>
+
+
+
+
+  <meta name="keywords" content="kangkang个人博客,康康个人博客,康康网络日志,康康的网络日志,康康的个人博客,kangkang网络日志,kangkang学习纪录,css,css3,html,html5,ecmascript5,ES6,ES2015,ES2016,ES2017,ES2018,windows,JavaScript,TypeScript,Node.js,Linux,Vuejs,Angular,Angularjs,React,Vuex,树莓派,kangkang,爬虫,Nginx,Apache,ownCloud,Nextcloud" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="KangKang - 个人博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="https://heyikang.me/2018/03/07/javascript-strict-model/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+//(function(){
+//    var bp = document.createElement('script');
+//    var curProtocol = window.location.protocol.split(':')[0];
+//    if (curProtocol === 'https') {
+//        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+//    }
+//    else {
+//        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+//    }
+//    var s = document.getElementsByTagName("script")[0];
+//    s.parentNode.insertBefore(bp, s);
+//})();
+</script>
+
+<!-- <script async src="//push.zhanzhang.baidu.com/push.js"></script> -->
+
+
+
+
+
+
+
+
+
+    <title> JavaScript Strict Model - KangKang - 个人博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">KangKang</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">KangKang</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          JavaScript Strict Model
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-03-07
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用严格模式的目的"><span class="toc-text">使用严格模式的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用严格模式"><span class="toc-text">使用严格模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调用方式"><span class="toc-text">调用方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#语法和行为的改变"><span class="toc-text">语法和行为的改变</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量显式声明"><span class="toc-text">全局变量显式声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态绑定"><span class="toc-text">静态绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增强的安全措施"><span class="toc-text">增强的安全措施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重名错误"><span class="toc-text">重名错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止八进制表示法"><span class="toc-text">禁止八进制表示法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments对象限制"><span class="toc-text">arguments对象限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留字"><span class="toc-text">保留字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考连接"><span class="toc-text">参考连接</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="使用严格模式的目的"><a href="#使用严格模式的目的" class="headerlink" title="使用严格模式的目的"></a>使用严格模式的目的</h2><ul>
+<li>消除JavaScript语法的一些不合理、不严谨，减少怪异行为</li>
+<li>消除代码运行的一些不安全之处，保证代码运行安全</li>
+<li>提高编译器效率，增加运行速度</li>
+<li>为未来新版本的JavaScript做好铺垫</li>
+</ul>
+<a id="more"></a>
+<h2 id="使用严格模式"><a href="#使用严格模式" class="headerlink" title="使用严格模式"></a>使用严格模式</h2><ul>
+<li>use strict</li>
+</ul>
+<p>如果浏览器<strong>不支持严格模式</strong>浏览器会把它当作普通字符串被<strong>忽略</strong></p>
+<p>进入严格模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br></pre></td></tr></table></figure>
+<h3 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h3><ul>
+<li>针对整个脚本</li>
+</ul>
+<p>将<code>&quot;use strict&quot;</code>放在降本文件的第一行，则整个脚本都将以“严格模式”运行。如果这行语句不在第一行，则无效（仅针对整个脚本），整个脚本将以“正常模式”运行。如果不同模式的代码文件合并成一个文件，这一点需要特别注意。</p>
+<blockquote>
+<p>严格地说，只要前面不是产生实际运行结果的语句，<code>&quot;use strict&quot;</code>可以不用在第一行，比如直接跟在一个空的分好后面。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="meta">    "use strict"</span>;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'这是严格模式'</span>)</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'这是正常模式'</span>)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>针对单个函数</li>
+</ul>
+<p>将<code>&quot;use strict&quot;</code>放在函数内的第一行，则整个函数以“严格模式”运行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strictModel</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这是严格模式'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">notStrictModel</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这是正常模式'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>脚本文件的变通写法<strong>(IIFE)</strong></li>
+</ul>
+<p>因为第一种调用方法不利于文件合并，所以更好的做法是，借用第二种方法，将整个脚本放在一个立即执行的匿名函数之中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span></span><br><span class="line">    <span class="comment">// Code</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h2 id="语法和行为的改变"><a href="#语法和行为的改变" class="headerlink" title="语法和行为的改变"></a>语法和行为的改变</h2><p>严格模式对JavaScript的语法和行为，都做了一些改变</p>
+<h3 id="全局变量显式声明"><a href="#全局变量显式声明" class="headerlink" title="全局变量显式声明"></a>全局变量显式声明</h3><p>在正常模式中，如果一个变量没有声明就赋值，默认是全局变量。严格模式禁止这种用法，全局变量必须显式声明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line">num = <span class="number">1</span> <span class="comment">// ReferenceError: num is not defined</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;&#125; <span class="comment">// ReferenceError: i is not defined</span></span><br></pre></td></tr></table></figure>
+<h3 id="静态绑定"><a href="#静态绑定" class="headerlink" title="静态绑定"></a>静态绑定</h3><p>JavaScript语言的一个特点，就是允许<strong>“动态绑定”</strong>，即某些属性和方法到底属于哪一个对象，不适在编译时确定的，而是在运行时<strong>(runtime)</strong>确定的。</p>
+<p>严格模式对动态绑定做了一些限制。某些情况下，只允许静态绑定。也就是说，属性和方法到底归属哪个对象，在编译阶段就确定。这样做有利于编译效率的提高，也使得代码更容易阅读，更少出现意外</p>
+<p>具体来说，涉及一下几个方面。</p>
+<ul>
+<li>禁止使用<code>with</code>语句</li>
+</ul>
+<p>因为使用<code>with</code>语句就无法在编译时就确定，属性到底归属哪个对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'el'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span>(el.style)&#123; <span class="comment">// SyntaxError: Strict mode code may not include a with statement</span></span><br><span class="line">    margin = <span class="string">'auto'</span></span><br><span class="line">    padding = <span class="string">'none'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立<code>eval</code>作用域</li>
+</ul>
+<p>正常模式下，JavaScript语言有三种作用域(scope)，全局作用域、函数作用域、块级作用域。严格模式下建立了第三种作用域：eval作用域</p>
+<p>正常模式下，eval语句的作用域，取决于它处于全局作用域，还是处于函数作用域。严格模式下，eval语句本身就是一个作用域，不再能够生成全局变量了，它所生成的变量只能用于eval内部。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 严格模式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">2</span></span><br><span class="line">    <span class="built_in">console</span>.info(<span class="built_in">eval</span>(<span class="string">'var x = 5;x'</span>)) <span class="comment">// 输出：5</span></span><br><span class="line">    <span class="built_in">console</span>.info(x) <span class="comment">// 输出：2</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正常模式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> y = <span class="number">8</span></span><br><span class="line">    <span class="built_in">console</span>.info(<span class="built_in">eval</span>(<span class="string">'var y = 5;y'</span>)) <span class="comment">//输出：5</span></span><br><span class="line">    <span class="built_in">console</span>.info(y) <span class="comment">// 输出：5</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h3 id="增强的安全措施"><a href="#增强的安全措施" class="headerlink" title="增强的安全措施"></a>增强的安全措施</h3><ul>
+<li>禁止<code>this</code>关键字指向全局对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">notStrictModel</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) </span><br><span class="line">    <span class="comment">// Chrome 输出 Window 对象</span></span><br><span class="line">    <span class="comment">// Node.js输出 global 对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 严格模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strictModel</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">// Chrome 输出 undefined</span></span><br><span class="line">    <span class="comment">// Node.js输出 undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此使用构造函数时，如果忘记加<code>new</code>，<code>this</code>不在指向全局对象而是报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    <span class="keyword">this</span>.a = num</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line">fn1(<span class="number">100</span>) <span class="comment">// TypeError: Cannot set property 'a' of undefined</span></span><br><span class="line"><span class="comment">// 使用 new 关键字</span></span><br><span class="line"><span class="keyword">new</span> fn1(<span class="number">100</span>) <span class="comment">// 输出：100</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>禁止在函数内部遍历调用栈</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strictModel</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    <span class="built_in">console</span>.log(strictModel.caller) <span class="comment">//返回一个对函数的引用</span></span><br><span class="line">    <span class="built_in">console</span>.log(strictModel.arguments) <span class="comment">//返回一个对象并不是数组</span></span><br><span class="line">    <span class="built_in">console</span>.log(strictModel.arguments.cllee)<span class="comment">// 返回当前函数名</span></span><br><span class="line">&#125;</span><br><span class="line">strictModel();</span><br><span class="line"><span class="comment">// TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>禁止删除变量</li>
+</ul>
+<p>严格模式下无法删除变量。只有<code>configurable</code>设置为<code>true</code>的对象属性才能被删除</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> x</span><br><span class="line"><span class="keyword">delete</span> x;</span><br><span class="line"><span class="comment">// SyntaxError: Delete of an unqualified identifier in strict mode.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.create(<span class="literal">null</span>,&#123;<span class="string">'x'</span>:&#123;</span><br><span class="line">    value:<span class="number">1</span>,</span><br><span class="line">    configurable:<span class="literal">true</span></span><br><span class="line">&#125;&#125;)</span><br><span class="line"><span class="keyword">var</span> state = <span class="keyword">delete</span> o.x</span><br><span class="line"><span class="built_in">console</span>.log(state) <span class="comment">// true 删除成功</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>显式报错</li>
+</ul>
+<p>正常模式下，对一个对象的<strong>只读属性执行赋值</strong>，<strong>不会报错</strong>，只会默默地失败。严格模式下，将会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">'v'</span>, &#123;</span><br><span class="line">    value: <span class="number">1</span>,</span><br><span class="line">    writable: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line">o.v = <span class="number">2</span></span><br><span class="line"><span class="comment">// TypeError: Cannot assign to read only property 'v' of object '#&lt;Object&gt;'</span></span><br></pre></td></tr></table></figure>
+<p>严格模式下，对一个使用getter方法读取的属性就行赋值，会报错</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    get value()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">o.value = <span class="number">2</span></span><br><span class="line"><span class="comment">// TypeError: Cannot set property value of #&lt;Object&gt; which has only a getter</span></span><br></pre></td></tr></table></figure>
+<p>严格模式下，对禁止扩展的对象添加新属性，将会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.preventExtensions(o)</span><br><span class="line">o.v = <span class="number">1</span> </span><br><span class="line"><span class="comment">// TypeError: Cannot add property v, object is not extensible</span></span><br></pre></td></tr></table></figure>
+<p>严格模式下，删除一个不可删除的属性，将会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">Object</span>.prototype</span><br><span class="line"><span class="comment">// TypeError: Cannot delete property 'prototype' of function Object() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="重名错误"><a href="#重名错误" class="headerlink" title="重名错误"></a>重名错误</h3><p>严格模式新增了一些语法错误。</p>
+<ul>
+<li>函数不能有重名的参数</li>
+</ul>
+<p>正常模式下，如果函数有多个重名的参数，可以使用aruments[index]读取。严格模式下，这属于语法错误</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,a,a,b</span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">// SyntaxError: Duplicate parameter name not allowed in this context</span></span><br></pre></td></tr></table></figure>
+<h3 id="禁止八进制表示法"><a href="#禁止八进制表示法" class="headerlink" title="禁止八进制表示法"></a>禁止八进制表示法</h3><p>正常模式下，证书的第一位如果是0，表示这个是八进制数，如果0100等于十进制64。严格模式禁止这种表示法，整数第一位为0，将报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0100</span></span><br><span class="line"><span class="comment">// SyntaxError: Octal literals are not allowed in strict mode.</span></span><br></pre></td></tr></table></figure>
+<h3 id="arguments对象限制"><a href="#arguments对象限制" class="headerlink" title="arguments对象限制"></a><code>arguments</code>对象限制</h3><p><code>arguments</code>是函数的参数对象，严格模式对它的使用做了限制。</p>
+<ul>
+<li>不允许对<code>arguments</code>赋值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="built_in">arguments</span>++</span><br><span class="line"><span class="comment">// SyntaxError: Unexpected eval or arguments in strict mode</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; set p(<span class="built_in">arguments</span>) &#123; &#125; &#125;;</span><br><span class="line"><span class="comment">// SyntaxError: Unexpected eval or arguments in strict mode</span></span><br><span class="line"><span class="keyword">try</span> &#123; &#125; <span class="keyword">catch</span> (<span class="built_in">arguments</span>) &#123; &#125; </span><br><span class="line"><span class="comment">// SyntaxError: Unexpected eval or arguments in strict mode</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arguments</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"><span class="comment">// SyntaxError: Unexpected eval or arguments in strict mode</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arguments"</span>, <span class="string">"'use strict'; return 17;"</span>)</span><br><span class="line"><span class="comment">// SyntaxError: Unexpected eval or arguments in strict mode</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>arguments</code>不再追踪参数的变化</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">notStrictModel</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    num = <span class="number">2</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]) <span class="comment">//正常模式下 arguments 会被修改 输出：2</span></span><br><span class="line">&#125;</span><br><span class="line">notStrictModel(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strictModel</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    num = <span class="number">2</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]) <span class="comment">//严格模式下 arguments 不会被修改 输出：10</span></span><br><span class="line">&#125;</span><br><span class="line">strictModel(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用<code>arguments.callee</code></li>
+</ul>
+<p>这就意味着，无法在匿名函数内部调用自身了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">arguments</span>.callee</span><br><span class="line">&#125;</span><br><span class="line">f() <span class="comment">// TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them</span></span><br></pre></td></tr></table></figure>
+<h3 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">implements interface let const async await</span><br><span class="line">package private public static yield class</span><br><span class="line">enum exports extends super</span><br></pre></td></tr></table></figure>
+<p>使用这些词作为变量名将会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">package</span>(<span class="params">await</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">static</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SyntaxError: Unexpected strict mode reserved word</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h2><ul>
+<li>MSDN<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener">Strict_mode</a></li>
+<li>阮一峰的<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="noopener">Javascript 严格模式</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://heyikang.me">KangKang</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://heyikang.me/2018/03/07/javascript-strict-model/">https://heyikang.me/2018/03/07/javascript-strict-model/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/学习笔记/">学习笔记</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/03/12/树莓派3B-安装Nginx/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">树莓派3B 安装Nginx</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/01/23/树莓派3B-安装Node-js/">
+        <span class="next-text nav-default">树莓派3B 安装Node.js</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:203077885@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/heyikang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://zhihu.com/people/heyikang" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2017 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">KangKang</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
